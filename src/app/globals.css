@@ -25,4 +25,23 @@
   .reading-content {
     font-family: 'Lora', Georgia, serif;
   }
+
+  /* Lava-themed scrollbar for the chapter list */
+  .lava-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(180, 55, 10, 0.35) transparent;
+  }
+  .lava-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .lava-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .lava-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(180, 55, 10, 0.35);
+    border-radius: 99px;
+  }
+  .lava-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(220, 80, 15, 0.55);
+  }
 }
