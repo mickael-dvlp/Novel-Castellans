@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
-  title: 'Mon Roman',
+  title: "L'ascension du Phénix",
   subtitle: 'Un voyage dans un monde fantastique',
-  author: 'Auteur',
-  description: 'Lisez notre roman chapitre par chapitre.',
+  author: 'Castellans',
+  description: "Lisez L'ascension du Phénix chapitre par chapitre.",
 }

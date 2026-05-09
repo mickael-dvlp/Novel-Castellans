@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     template: `%s — ${SITE_CONFIG.title}`,
   },
   description: SITE_CONFIG.description,
+  icons: { icon: '/image/favicon.ico' },
 }
 
 export default function RootLayout({

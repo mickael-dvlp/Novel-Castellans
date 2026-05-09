@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administration — Mon Roman</title>
+</head>
+<body>
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // 🔧 Remplace uniquement "TON-COMPTE/TON-REPO" par ton dépôt GitHub (ex: "mickael/mon-roman")
+    CMS.init({
+      config: {
+        backend: {
+          name: 'github',
+          repo: 'TON-COMPTE/TON-REPO',
+          branch: 'main',
+          base_url: window.location.origin,
+          auth_endpoint: 'api/auth',
+        },
+        locale: 'fr',
+        media_folder: 'public/images',
+        public_folder: '/images',
+        collections: [
+          {
+            name: 'chapters',
+            label: 'Chapitres',
+            label_singular: 'Chapitre',
+            folder: 'content/chapters',
+            create: true,
+            delete: true,
+            identifier_field: 'chapter',
+            slug: '{{chapter}}',
+            fields: [
+              {
+                label: 'Numéro de chapitre',
+                name: 'chapter',
+                widget: 'number',
+                value_type: 'int',
+                min: 1,
+                hint: 'Doit être unique (ex: 4, 5, 6…)',
+              },
+              {
+                label: 'Titre',
+                name: 'title',
+                widget: 'string',
+              },
+              {
+                label: 'Date de parution',
+                name: 'date',
+                widget: 'datetime',
+                format: 'YYYY-MM-DD',
+                date_format: 'DD/MM/YYYY',
+                time_format: false,
+                required: false,
+              },
+              {
+                label: 'Contenu du chapitre',
+                name: 'body',
+                widget: 'markdown',
+              },
+            ],
+          },
+        ],
+      },
+    });
+  </script>
+</body>
+</html>
