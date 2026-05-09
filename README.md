@@ -11,11 +11,17 @@ Site de lecture de light novel généré statiquement avec Next.js, pensé pour 
 - **Thème liseuse** : mode sombre activé par défaut, toggle jour/nuit dans la navbar
 - **Chapitres en Markdown** dans `content/chapters/` avec frontmatter (`title`, `chapter`, `date`)
 - **Routes** `/chapitre/[slug]` générées automatiquement à chaque build
-- **Page d'accueil** listant tous les chapitres (numéro, titre, date de parution)
+- **Page d'accueil immersive** en `100dvh` fixe : fond lave animé, cendres tombantes, braises montantes
 - **Navigation** précédent / suivant entre chapitres
 - **Sauvegarde de progression** en localStorage — bouton "Reprendre la lecture" sur l'accueil
 - **Responsive** — lisible sur mobile, tablette et desktop
 - **Favicon** depuis `public/image/favicon.ico`
+
+### Animation page d'accueil
+- **Fond lave** (canvas `requestAnimationFrame`) : 6 bassins de lave pulsants, 9 fissures lumineuses à scintillement indépendant
+- **Particules** : cendres grises qui tombent en dérive + braises orangées qui remontent avec halo
+- **Entrées animées** (Framer Motion) : titre en fondu/glissement, chapitres en stagger
+- **Scroll isolé** : la page ne scroll pas, seule la liste des chapitres défile en interne
 
 ### Interface d'administration (Decap CMS)
 - Accessible sur `/admin` — aucun accès au code nécessaire
@@ -105,5 +111,7 @@ Contenu du chapitre en Markdown...
 | next-themes | Toggle dark/light mode |
 | gray-matter | Parsing du frontmatter Markdown |
 | marked | Conversion Markdown → HTML |
+| Framer Motion | Animations d'entrée (page d'accueil) |
+| Canvas 2D API | Animation lave + particules |
 | Decap CMS v3 | Interface d'administration |
 | Vercel | Hébergement (à configurer) |
