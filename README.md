@@ -36,53 +36,7 @@ Site de lecture de light novel généré statiquement avec Next.js, pensé pour 
 
 ---
 
-## Ce qui reste à faire
 
-### 1. Créer une GitHub OAuth App
-
-Sur [github.com/settings/developers](https://github.com/settings/developers) → **OAuth Apps** → **New OAuth App** :
-
-| Champ | Valeur |
-|---|---|
-| Homepage URL | `https://ton-site.vercel.app` |
-| Authorization callback URL | `https://ton-site.vercel.app/api/auth/callback` |
-
-> Pour le développement local, ajouter aussi `http://localhost:3000/api/auth/callback` comme callback URL (GitHub accepte plusieurs valeurs).
-
-Copier le **Client ID** et générer un **Client Secret**.
-
-### 2. Configurer le dépôt dans l'admin CMS
-
-Dans [public/admin/index.html](public/admin/index.html), remplacer :
-
-```js
-repo: 'TON-COMPTE/TON-REPO',
-```
-
-par :
-
-```js
-repo: 'mickael-dvlp/Novel-Castellans',
-```
-
-### 3. Variables d'environnement en local
-
-Créer un fichier `.env.local` à la racine (non versionné) :
-
-```env
-GITHUB_CLIENT_ID=ton_client_id_ici
-GITHUB_CLIENT_SECRET=ton_client_secret_ici
-```
-
-### 4. Déployer sur Vercel
-
-1. Importer le dépôt `mickael-dvlp/Novel-Castellans` sur [vercel.com](https://vercel.com)
-2. Dans **Settings → Environment Variables**, ajouter :
-   - `GITHUB_CLIENT_ID`
-   - `GITHUB_CLIENT_SECRET`
-3. Déclencher un redéploiement
-
----
 
 ## Structure des chapitres
 
@@ -114,4 +68,4 @@ Contenu du chapitre en Markdown...
 | Framer Motion | Animations d'entrée (page d'accueil) |
 | Canvas 2D API | Animation lave + particules |
 | Decap CMS v3 | Interface d'administration |
-| Vercel | Hébergement (à configurer) |
+| Vercel | Hébergement |
