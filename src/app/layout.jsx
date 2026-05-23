@@ -1,11 +1,10 @@
-import type { Metadata } from 'next'
 import './globals.css'
 import { Providers } from '@/components/Providers'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { SITE_CONFIG } from '@/config'
 
-export const metadata: Metadata = {
+export const metadata = {
   title: {
     default: SITE_CONFIG.title,
     template: `%s — ${SITE_CONFIG.title}`,
@@ -14,11 +13,7 @@ export const metadata: Metadata = {
   icons: { icon: '/image/favicon.ico' },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="fr" suppressHydrationWarning>
       <body className="bg-parchment dark:bg-night text-ink dark:text-stone-200 transition-colors duration-300 min-h-screen flex flex-col">

@@ -2,15 +2,10 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import type { ChapterMeta } from '@/lib/chapters'
 import { SITE_CONFIG } from '@/config'
 import ResumeReading from './ResumeReading'
 
-interface Props {
-  chapters: ChapterMeta[]
-}
-
-export default function HomeContent({ chapters }: Props) {
+export default function HomeContent({ chapters }) {
   return (
     <div className="relative z-10 flex flex-col h-full max-w-[788px] mx-auto w-full px-4 pt-6 pb-4">
 

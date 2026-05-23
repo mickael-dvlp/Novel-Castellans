@@ -2,31 +2,18 @@
 
 import { useEffect, useRef } from 'react'
 
-interface Particle {
-  x: number
-  y: number
-  vx: number
-  vy: number
-  size: number
-  opacity: number
-  life: number
-  maxLife: number
-  type: 'ash' | 'ember'
-}
-
 const MAX_PARTICLES = 130
 
 export default function LavaBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef(null)
 
   useEffect(() => {
-    // canvasRef.current is always non-null inside useEffect (component is mounted)
-    const el = canvasRef.current!
-    const ctx = el.getContext('2d')!
+    const el = canvasRef.current
+    const ctx = el.getContext('2d')
 
-    let raf: number
+    let raf
     let t = 0
-    const particles: Particle[] = []
+    const particles = []
 
     const resize = () => {
       el.width = window.innerWidth
@@ -35,7 +22,7 @@ export default function LavaBackground() {
     resize()
     window.addEventListener('resize', resize)
 
-    function spawn(w: number, h: number): Particle {
+    function spawn(w, h) {
       const isEmber = Math.random() < 0.35
       return {
         x: Math.random() * w,

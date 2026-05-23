@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function GET(request: NextRequest) {
+export async function GET(request) {
   const clientId = process.env.GITHUB_CLIENT_ID
   if (!clientId) {
     return new NextResponse('GITHUB_CLIENT_ID non configuré', { status: 500 })

@@ -5,18 +5,7 @@ import { marked } from 'marked'
 
 const chaptersDir = path.join(process.cwd(), 'content/chapters')
 
-export interface ChapterMeta {
-  slug: string
-  title: string
-  chapter: number
-  date: string
-}
-
-export interface Chapter extends ChapterMeta {
-  content: string
-}
-
-function formatDate(raw: string): string {
+function formatDate(raw) {
   if (!raw) return ''
   try {
     return new Date(raw).toLocaleDateString('fr-FR', {
@@ -29,7 +18,7 @@ function formatDate(raw: string): string {
   }
 }
 
-export function getAllChaptersMeta(): ChapterMeta[] {
+export function getAllChaptersMeta() {
   if (!fs.existsSync(chaptersDir)) return []
 
   const files = fs.readdirSync(chaptersDir)
@@ -53,18 +42,16 @@ export function getAllChaptersMeta(): ChapterMeta[] {
     .sort((a, b) => a.chapter - b.chapter)
 }
 
-export function getAllChapterSlugs(): string[] {
+export function getAllChapterSlugs() {
   return getAllChaptersMeta().map(c => c.slug)
 }
 
-export async function getChapterBySlug(slug: string): Promise<Chapter | null> {
+export async function getChapterBySlug(slug) {
   if (!fs.existsSync(chaptersDir)) return null
 
   const chapterNum = parseInt(slug)
   if (isNaN(chapterNum)) return null
 
-  // Scan all files and match by frontmatter chapter number
-  // (compatible with both 001.md and 1.md naming conventions)
   const files = fs.readdirSync(chaptersDir).filter(f => f.endsWith('.md'))
 
   for (const filename of files) {

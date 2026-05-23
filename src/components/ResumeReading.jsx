@@ -3,14 +3,8 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-interface SavedProgress {
-  slug: string
-  chapter: number
-  title: string
-}
-
 export default function ResumeReading() {
-  const [progress, setProgress] = useState<SavedProgress | null>(null)
+  const [progress, setProgress] = useState(null)
 
   useEffect(() => {
     const saved = localStorage.getItem('lastChapter')

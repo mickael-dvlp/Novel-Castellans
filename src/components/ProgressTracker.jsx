@@ -2,13 +2,7 @@
 
 import { useEffect } from 'react'
 
-interface Props {
-  slug: string
-  chapterNum: number
-  title: string
-}
-
-export default function ProgressTracker({ slug, chapterNum, title }: Props) {
+export default function ProgressTracker({ slug, chapterNum, title }) {
   useEffect(() => {
     localStorage.setItem(
       'lastChapter',

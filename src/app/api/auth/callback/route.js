@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function GET(request: NextRequest) {
+export async function GET(request) {
   const code = request.nextUrl.searchParams.get('code')
 
   if (!code) {
@@ -21,11 +21,7 @@ export async function GET(request: NextRequest) {
       }),
     })
 
-    const data = (await res.json()) as {
-      access_token?: string
-      error?: string
-      error_description?: string
-    }
+    const data = await res.json()
 
     if (!data.access_token) {
       return buildPage('error', {
@@ -39,7 +35,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-function buildPage(status: 'success' | 'error', data: object) {
+function buildPage(status, data) {
   const safeData = JSON.stringify(data).replace(/</g, '\\u003c')
   const html = `<!DOCTYPE html>
 <html>
@@ -59,7 +55,7 @@ function buildPage(status: 'success' | 'error', data: object) {
 })();
 </script>
 <p style="font-family:sans-serif;text-align:center;margin-top:2rem;color:#666">
-  ${status === 'success' ? 'Connexion réussie, fermeture…' : 'Erreur d\'authentification.'}
+  ${status === 'success' ? 'Connexion réussie, fermeture…' : "Erreur d'authentification."}
 </p>
 </body>
 </html>`

@@ -31,3 +31,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# chapitres non encore publiés (004 et au-delà)
+content/chapters/0[0-9][4-9].md
+content/chapters/0[1-9][0-9].md
+content/chapters/[1-9][0-9][0-9].md
+
+# Pour rajouter un chapitre, il suffit de faire : 
+# git add -f content/chapters/005.md (le -f force l'ajout d'un fichier ignoré), puis de committer normalement.

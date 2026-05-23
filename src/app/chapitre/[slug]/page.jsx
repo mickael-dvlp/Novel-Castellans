@@ -1,19 +1,14 @@
-import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getAllChaptersMeta, getChapterBySlug } from '@/lib/chapters'
 import ChapterNav from '@/components/ChapterNav'
 import ProgressTracker from '@/components/ProgressTracker'
-
-interface Props {
-  params: Promise<{ slug: string }>
-}
 
 export async function generateStaticParams() {
   const chapters = getAllChaptersMeta()
   return chapters.map(c => ({ slug: c.slug }))
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }) {
   const { slug } = await params
   const chapter = await getChapterBySlug(slug)
   if (!chapter) return {}
@@ -23,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ChapterPage({ params }: Props) {
+export default async function ChapterPage({ params }) {
   const { slug } = await params
   const chapter = await getChapterBySlug(slug)
 

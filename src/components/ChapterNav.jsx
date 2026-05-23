@@ -1,12 +1,6 @@
 import Link from 'next/link'
-import type { ChapterMeta } from '@/lib/chapters'
 
-interface Props {
-  prevChapter: ChapterMeta | null
-  nextChapter: ChapterMeta | null
-}
-
-export default function ChapterNav({ prevChapter, nextChapter }: Props) {
+export default function ChapterNav({ prevChapter, nextChapter }) {
   return (
     <div className="flex items-center justify-between gap-3 py-5 border-y border-amber-200/60 dark:border-stone-800/60 my-8">
       {prevChapter ? (
