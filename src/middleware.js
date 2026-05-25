@@ -7,8 +7,13 @@ export function middleware(request) {
     return NextResponse.next()
   }
 
+  const sitePassword = process.env.SITE_PASSWORD
+  if (!sitePassword) {
+    return NextResponse.redirect(new URL('/login', request.url))
+  }
+
   const cookie = request.cookies.get('site-auth')
-  if (cookie?.value === process.env.SITE_PASSWORD) {
+  if (cookie?.value === sitePassword) {
     return NextResponse.next()
   }
 
